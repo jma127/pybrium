@@ -1,6 +1,6 @@
 import torch
 
-from pybrium.nash_averaging import nash_average
+from pybrium import nash_average
 
 
 def rock_paper_scissors():
@@ -37,9 +37,30 @@ def redundancy_invariance():
     print(nash_rating)
 
 
+def random_tournament():
+    print("==== Random tournaments ====")
+
+    n = 8
+
+    logit_winrates = torch.randn((n, n))
+    logit_winrates = logit_winrates - logit_winrates.transpose(0, 1)
+
+    print("Winrate logits:")
+    print(logit_winrates)
+
+    nash_equilibrium, nash_rating = nash_average(logit_winrates, steps=(2 ** 18))
+
+    print("Equilibrium strategy:")
+    print(nash_equilibrium)
+
+    print("Nash averaging ratings:")
+    print(nash_rating)
+
+
 def main():
     rock_paper_scissors()
     redundancy_invariance()
+    random_tournament()
 
 
 if __name__ == "__main__":
