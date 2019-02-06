@@ -49,6 +49,21 @@ def _get_regret(policy, payoffs, positive=True):
 
 
 def solve_maxent_ce(payoffs, steps=1000000, lams=None, lr=None):
+    """Calculates the maximum-entropy correlated equilibrium as defined in
+    Ortiz et al. (2007).
+
+    payoffs (torch.Tensor):
+        Joint payoff tensor.
+    steps (int, optional):
+        Number of SGD steps to use in calculations (default: 1000000).
+    lams (torch.Tensor):
+        Initialization logits (default: auto-initialied).
+    lr (float):
+        SGD learning rate (default: auto-computed).
+
+    Ortiz et al., "Maximum entropy correlated equilibria", 2007,
+        http://proceedings.mlr.press/v2/ortiz07a/ortiz07a.pdf
+    """
     n = payoffs.size(0)
     action_counts = tuple(payoffs.shape[1:])
 
