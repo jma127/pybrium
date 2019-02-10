@@ -1,11 +1,13 @@
 from setuptools import setup, find_packages
 
-from pybrium import __version__
+
+with open("pybrium/version.py") as infile:
+    exec(infile.read())
 
 
 setup(
     name="pybrium",
-    version=__version__,
+    version=version,
     description="Python library for calculations involving strategies and equilibria",
     author="Jerry Ma",
     url="https://github.com/jma127/pybrium",
