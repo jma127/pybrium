@@ -6,7 +6,7 @@ from pybrium import nash_average
 def rock_paper_scissors():
     print("==== Rock paper scissors ====")
 
-    payoffs = torch.tensor([[0, 1, -1], [-1, 0, 1], [1, -1, 0]], dtype=torch.float32)
+    payoffs = torch.tensor([[0, -1, 1], [1, 0, -1], [-1, 1, 0]], dtype=torch.float32)
 
     print("Payoffs:")
     print(payoffs)
@@ -23,7 +23,7 @@ def rock_paper_scissors():
 def redundancy_invariance():
     print("==== Rock paper scissors knife ====")
 
-    payoffs = torch.tensor([[0, 1, -1, -1], [-1, 0, 1, 1], [1, -1, 0, 0], [1, -1, 0, 0]], dtype=torch.float32)
+    payoffs = torch.tensor([[0, -1, 1, 1], [1, 0, -1, -1], [-1, 1, 0, 0], [-1, 1, 0, 0]], dtype=torch.float32)
 
     print("Payoffs:")
     print(payoffs)
